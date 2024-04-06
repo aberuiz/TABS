@@ -1,0 +1,59 @@
+---
+output: github_document
+---
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# TABS: An R Package
+
+This package provides an easier way to import project data from the Texas Architectural Barriers System database maintained by the [Texas Department of Licensing and Registration](https://www.tdlr.texas.gov/).
+
+### Installation
+
+You can install the development version of TABS from [GitHub](https:://github.com/aberuiz/TABS) with:
+
+```{r, message=FALSE, warning=FALSE}
+#install.packages("remotes")
+remotes::install_github("aberuiz/TABS")
+library(TABS)
+```
+
+## Usage
+
+The package works primarily around one function to receive projects registered with TABS: `GetProjects`.
+
+The example below will pull all projects registered within Travis County on February 29, 2024.
+```{r}
+GetProjects(
+  county = "Travis",
+  reg_begin = "02/29/24",
+  reg_end = "03/01/24"
+)
+```
+
+## Additional Arguments
+
+In addition to dates you can search for projects by county, city, address, owner name, facility, and/or project name. The below example will search for all projects in the City of Austin that are owned by Tesla.
+```{r}
+GetProjects(
+  city = "Austin",
+  owner = "Tesla"
+)
+```
+
+### Details
+
+**Registration Dates:**
+
+Dates are required to be in the mm/dd/yy format. For automating dates, you can use `format(Sys.Date(), "%D")`.
+Date arguments are passed to the database as midnight therefore, `reg_begin` at 02/29/24 will include projects starting on February 29, 2024 and `reg_end` at 03/01/24 will mean projects that started on 03/01/24 or later will not be included.
+   
+**Capitalization**
+
+As of this version, city and county names must follow appropriate capitalization rules.
