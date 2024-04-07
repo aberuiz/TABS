@@ -2,7 +2,7 @@
 % Please edit documentation in R/TABSdecoder.R
 \name{TABSdecoder}
 \alias{TABSdecoder}
-\title{Recode values}
+\title{Recode values to and from TDLR}
 \usage{
 TABSdecoder(codes, ..., codebook_df = dat)
 }

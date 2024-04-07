@@ -20,9 +20,9 @@ GetProjects(
 
 \item{city}{The Texas city where the physical project is}
 
-\item{reg_begin}{The start date for searching projects}
+\item{reg_begin}{The start date for searching projects Date Format: mm/dd/yy}
 
-\item{reg_end}{The cutoff date for searching projects}
+\item{reg_end}{The cutoff date for searching projects Date Format: mm/dd/yy}
 
 \item{owner}{Search by the owner of a project}
 
@@ -44,6 +44,10 @@ GetProjects(
   reg_begin = "03/01/24",
   reg_end = "04/01/24"
 )
-GetProjects(city = "Austin", owner = "Tesla", reg_begin = "01/01/20", reg_end = "01/01/24")
-
+GetProjects(
+  city = "Austin",
+  owner = "Tesla",
+  reg_begin = "01/01/20",
+  reg_end = "01/01/24"
+)
 }

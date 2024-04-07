@@ -1,8 +1,7 @@
-#' Recode values
+#' Recode values to and from TDLR
 #'
 #' @description
 #' Will submit appropriate codes to TDLR and return plain language values to user
-
 TABSdecoder <- function(codes,..., codebook_df=dat) {
   # Ensure the codebook dataframe has two columns: numeric_value and character_value
   if (!all(c("code", "value") %in% colnames(codebook_df))) {
