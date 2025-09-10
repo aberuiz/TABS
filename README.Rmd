@@ -12,7 +12,7 @@ knitr::opts_chunk$set(
 
 # TABS: An R Package
 
-This package provides an easier way to import project data from the Texas Architectural Barriers System database maintained by the [Texas Department of Licensing and Registration](https://www.tdlr.texas.gov/).
+This package provides an easier way to import project data from the Texas Architectural Barriers System database maintained by the [Texas Department of Licensing and Regulation](https://www.tdlr.texas.gov/).
 
 ### Installation
 
