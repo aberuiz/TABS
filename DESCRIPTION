@@ -1,7 +1,7 @@
 Package: TABS
 Type: Package
 Title: TABS an R Package
-Version: 0.1.0
+Version: 0.1.1
 Author: Abraham Ruiz
 Maintainer: Abraham Ruiz <abraham@graycompass.com>
 Description: Make requests for projects registered with the Texas Department of Licensing and Regulation in the Texas Architectual Barriers System database.
@@ -13,5 +13,5 @@ imports:
   httr2,
   purrr
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5)
 RoxygenNote: 7.3.3

@@ -33,12 +33,12 @@ GetProjects <- function(county = NULL, city = NULL, reg_begin = "", reg_end = ""
   reg_end_formatted <- gsub("/","%2F",reg_end)
   # Decode city &/or county character value to integer for request
   if (!is.null(county)){
-    countycodes <- subset(dat, dat$code > 1999)
+    countycodes <- subset(codebook, codebook$code > 1999)
     county <- TABSdecoder(county, codebook_df = countycodes)
   }
 
   if (!is.null(city)){
-    citycodes <- subset(dat, dat$code < 2000)
+    citycodes <- subset(codebook, codebook$code < 2000)
     city <- TABSdecoder(city, codebook_df = citycodes)
   }
 

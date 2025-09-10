@@ -4,7 +4,7 @@
 \alias{TABSdecoder}
 \title{Recode values to and from TDLR}
 \usage{
-TABSdecoder(codes, ..., codebook_df = dat)
+TABSdecoder(codes, ..., codebook_df = codebook)
 }
 \description{
 Will submit appropriate codes to TDLR and return plain language values to user
