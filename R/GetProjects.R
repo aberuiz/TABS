@@ -26,6 +26,7 @@
 #'   reg_begin = "01/01/20",
 #'   reg_end = "01/01/24"
 #' )
+#' @export
 GetProjects <- function(county = NULL, city = NULL, reg_begin = "", reg_end = "", owner = "", project = "", facility = "", address = ""){
   # Registration date format must be in mm/dd/yy %D
   reg_beg_formatted <- gsub("/","%2F",reg_begin)
