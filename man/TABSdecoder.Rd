@@ -4,7 +4,12 @@
 \alias{TABSdecoder}
 \title{Recode values to and from TDLR}
 \usage{
-TABSdecoder(codes, ..., codebook_df = codebook)
+TABSdecoder(codes, codebook_df = codebook)
+}
+\arguments{
+\item{codes}{variable sent to codebook for deciphering}
+
+\item{codebook_df}{codebook dataframe to check codes against, by default this uses the built in `codebook`}
 }
 \description{
 Will submit appropriate codes to TDLR and return plain language values to user

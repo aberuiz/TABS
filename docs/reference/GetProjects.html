@@ -98,12 +98,12 @@
 <span class="r-in"><span>  reg_end <span class="op">=</span> <span class="st">"04/01/24"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 13</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ProjectId             ProjectNumber ProjectName ProjectCreatedOn ProjectStatus</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 2d1d3a91-4163-4a87-8… TABS20240143… Downtown R… 2024-03-21T14:0… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> c6f14339-97c4-47c3-8… TABS20240138… Caldwell C… 2024-03-15T07:1… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: FacilityName &lt;chr&gt;, City &lt;chr&gt;, County &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   TypeOfWork &lt;chr&gt;, EstimatedCost &lt;dbl&gt;, DataVersionId &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ProjectId                ProjectNumber DataVersionId ProjectName ProjectStatus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 2d1d3a91-4163-4a87-83c5… TABS20240143…        <span style="text-decoration: underline;">900</span>001 Downtown R… Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> c6f14339-97c4-47c3-865d… TABS20240138…        <span style="text-decoration: underline;">900</span>001 Caldwell C… Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: ProjectCreatedOn &lt;chr&gt;, FacilityName &lt;chr&gt;, City &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   County &lt;chr&gt;, TypeOfWork &lt;chr&gt;, EstimatedCost &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   EstimatedStartDate &lt;chr&gt;, EstimatedEndDate &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="fu">GetProjects</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  city <span class="op">=</span> <span class="st">"Austin"</span>,</span></span>
@@ -112,28 +112,28 @@
 <span class="r-in"><span>  reg_end <span class="op">=</span> <span class="st">"01/01/24"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 18 × 13</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ProjectId            ProjectNumber ProjectName ProjectCreatedOn ProjectStatus</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 5e9807b6-2e19-4321-… TABS20240050… Tesla - Au… 2023-11-09T16:2… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 10bfef25-1f11-4d69-… TABS20240050… Tesla - Au… 2023-11-09T15:5… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> cb51ea73-45d2-42e9-… TABS20240050… Tesla - Au… 2023-11-09T15:2… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> f4fe51eb-f383-49a4-… TABS20240016… Tesla - CY… 2023-09-25T15:2… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 73e58c62-18a8-4cc5-… TABS20240015… Tesla - Au… 2023-09-22T11:3… Project Regi…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1a606421-df95-45f2-… TABS20230224… Tesla - Au… 2023-06-28T13:3… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 6eeb5963-58b7-41b6-… TABS20230145… Tesla - Au… 2023-03-21T08:4… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> cb1db4ea-f42d-4246-… TABS20230090… Tesla Inc.  2023-01-10T15:1… Project Clos…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> e85eb537-95c8-407e-… TABS20230089… Tesla Inc.  2023-01-09T15:5… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 73e05b7b-333a-4fca-… TABS20230089… Tesla Inc.  2023-01-09T15:4… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> b45fdc21-7e8f-41a5-… TABS20230089… Tesla Inc.  2023-01-09T13:2… Project Clos…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> c3942697-0d34-4ff2-… TABS20230089… Tesla Inc.  2023-01-09T13:0… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 78770e35-799a-4bec-… TABS20230079… Tesla Inc.  2022-12-20T10:0… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> f231061e-6e6a-4e0b-… TABS20220057… Tesla Inc.  2021-11-19T19:2… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> b2ceedb5-f47c-412c-… TABS20220057… Tesla Inc.  2021-11-19T19:1… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> b0acf81d-bf5e-495b-… TABS20220057… Tesla Inc.  2021-11-19T19:0… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> c0d2c11c-73ee-47c0-… TABS20220057… Tesla Inc.  2021-11-19T18:5… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> e1b5be59-bc3a-4fc5-… TABS20220057… Tesla Inc.  2021-11-19T18:4… Review Compl…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: FacilityName &lt;chr&gt;, City &lt;chr&gt;, County &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   TypeOfWork &lt;chr&gt;, EstimatedCost &lt;dbl&gt;, DataVersionId &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ProjectId               ProjectNumber DataVersionId ProjectName ProjectStatus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 5e9807b6-2e19-4321-ad2… TABS20240050…        <span style="text-decoration: underline;">900</span>001 Tesla - Au… Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 10bfef25-1f11-4d69-b02… TABS20240050…        <span style="text-decoration: underline;">900</span>001 Tesla - Au… Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> cb51ea73-45d2-42e9-841… TABS20240050…        <span style="text-decoration: underline;">900</span>001 Tesla - Au… Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> f4fe51eb-f383-49a4-a44… TABS20240016…        <span style="text-decoration: underline;">900</span>001 Tesla - CY… Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 73e58c62-18a8-4cc5-a27… TABS20240015…        <span style="text-decoration: underline;">900</span>001 Tesla - Au… Project Regi…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1a606421-df95-45f2-a2b… TABS20230224…        <span style="text-decoration: underline;">900</span>001 Tesla - Au… Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 6eeb5963-58b7-41b6-8cf… TABS20230145…        <span style="text-decoration: underline;">900</span>001 Tesla - Au… Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> cb1db4ea-f42d-4246-b90… TABS20230090…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Project Clos…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> e85eb537-95c8-407e-bc5… TABS20230089…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 73e05b7b-333a-4fca-903… TABS20230089…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> b45fdc21-7e8f-41a5-bca… TABS20230089…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Project Clos…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> c3942697-0d34-4ff2-981… TABS20230089…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 78770e35-799a-4bec-86a… TABS20230079…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> f231061e-6e6a-4e0b-b88… TABS20220057…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> b2ceedb5-f47c-412c-8b4… TABS20220057…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> b0acf81d-bf5e-495b-a53… TABS20220057…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> c0d2c11c-73ee-47c0-993… TABS20220057…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> e1b5be59-bc3a-4fc5-969… TABS20220057…        <span style="text-decoration: underline;">900</span>001 Tesla Inc.  Review Compl…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: ProjectCreatedOn &lt;chr&gt;, FacilityName &lt;chr&gt;, City &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   County &lt;chr&gt;, TypeOfWork &lt;chr&gt;, EstimatedCost &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   EstimatedStartDate &lt;chr&gt;, EstimatedEndDate &lt;chr&gt;</span></span>
 </code></pre></div>
     </div>

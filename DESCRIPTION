@@ -5,13 +5,12 @@ Version: 0.1.1
 Author: Abraham Ruiz
 Maintainer: Abraham Ruiz <abe@graycompass.com>
 Description: Make requests for projects registered with the Texas Department of Licensing and Regulation in the Texas Architectual Barriers System database.
-License: MIT + file LICENSE
+License: MIT
 Encoding: UTF-8
 LazyData: true
-imports: 
+Imports: 
   dplyr,
-  httr2,
-  purrr
+  httr2
 Depends: 
     R (>= 4.1)
 RoxygenNote: 7.3.3
