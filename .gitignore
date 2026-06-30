@@ -4,3 +4,7 @@
 .Ruserdata
 docs
 .DS_Store
+
+# Keep the raw TDLR download and the refresh script private.
+# The compiled codebook ships publicly via data/codebook.rda.
+data-raw/
