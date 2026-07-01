@@ -1,7 +1,8 @@
 # Recode values to and from TDLR
 
 Will submit appropriate codes to TDLR and return plain language values
-to user
+to user. Name lookups are case-insensitive and ignore surrounding
+whitespace.
 
 ## Usage
 
