@@ -12,5 +12,6 @@ TABSdecoder(codes, codebook_df = codebook)
 \item{codebook_df}{codebook dataframe to check codes against, by default this uses the built in `codebook`}
 }
 \description{
-Will submit appropriate codes to TDLR and return plain language values to user
+Will submit appropriate codes to TDLR and return plain language values to user.
+Name lookups are case-insensitive and ignore surrounding whitespace.
 }

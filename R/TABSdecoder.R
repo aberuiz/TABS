@@ -4,7 +4,8 @@
 #' @param codebook_df codebook dataframe to check codes against, by default this uses the built in `codebook`
 #'
 #' @description
-#' Will submit appropriate codes to TDLR and return plain language values to user
+#' Will submit appropriate codes to TDLR and return plain language values to user.
+#' Name lookups are case-insensitive and ignore surrounding whitespace.
 TABSdecoder <- function(codes, codebook_df=codebook) {
   # Ensure the codebook dataframe has two columns: numeric_value and character_value
   if (!all(c("code", "value") %in% colnames(codebook_df))) {
@@ -17,7 +18,11 @@ TABSdecoder <- function(codes, codebook_df=codebook) {
 
     return(character_values)
   } else {
-    numeric_values <- codebook_df$code[match(codes, codebook_df$value)]
+    # Match names case-insensitively (and ignore surrounding whitespace) so
+    # users don't have to reproduce TDLR's exact capitalization.
+    numeric_values <- codebook_df$code[
+      match(tolower(trimws(codes)), tolower(trimws(codebook_df$value)))
+    ]
 
     return(numeric_values)
   }

@@ -15,19 +15,12 @@ You can install the development version of TABS from
 remotes::install_github("aberuiz/TABS")
 #> 
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#>      checking for file ‘/private/var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T/RtmptWIXQL/remotesa98a10fc3fd/aberuiz-TABS-10451e4/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T/RtmptWIXQL/remotesa98a10fc3fd/aberuiz-TABS-10451e4/DESCRIPTION’
-#>   ─  preparing ‘TABS’:
-#>      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-#>   ─  checking for LF line-endings in source and make files and shell scripts
-#>   ─  checking for empty or unneeded directories
-#>        NB: this package now depends on R (>= 4.1.0)
-#>        WARNING: Added dependency on R >= 4.1.0 because package code uses the
-#>      pipe |> or function shorthand \(...) syntax added in R 4.1.0.
-#>      File(s) using such syntax:
-#>        ‘GetProjects.R’
-#>   ─  building ‘TABS_0.1.0.tar.gz’
-#>      
-#> 
+#> * checking for file ‘/private/var/folders/gh/fbq3g2jj4h9b09knhwdpmxpc0000gn/T/RtmpKW4b0y/remotes10af23cd5d4d4/aberuiz-TABS-d45f62f/DESCRIPTION’ ... OK
+#> * preparing ‘TABS’:
+#> * checking DESCRIPTION meta-information ... OK
+#> * checking for LF line-endings in source and make files and shell scripts
+#> * checking for empty or unneeded directories
+#> * building ‘TABS_0.1.1.tar.gz’
 library(TABS)
 ```
 
@@ -46,22 +39,22 @@ GetProjects(
   reg_end = "03/01/24"
 )
 #> # A tibble: 11 × 13
-#>    ProjectId            ProjectNumber ProjectName ProjectCreatedOn ProjectStatus
-#>    <chr>                <chr>         <chr>       <chr>            <chr>        
-#>  1 49d1f868-09e6-46aa-… TABS20240127… ATX Kitche… 2024-02-29T22:0… Inspection C…
-#>  2 862b0820-4e65-4cfa-… TABS20240127… FM 973 Ret… 2024-02-29T20:5… Review Compl…
-#>  3 930be231-ddcb-40a4-… TABS20240127… Orrick      2024-02-29T20:0… Project Clos…
-#>  4 c6483eaa-317d-40cb-… TABS20240127… South Lama… 2024-02-29T17:1… Review Compl…
-#>  5 002ed414-d948-4528-… TABS20240127… La Carnice… 2024-02-29T14:4… Review Compl…
-#>  6 f2af9e71-ddd5-4e25-… TABS20240127… ACVB        2024-02-29T14:3… Project Clos…
-#>  7 119d43a6-943a-43a0-… TABS20240127… Play Stree… 2024-02-29T13:4… Project Regi…
-#>  8 43cfd9f8-6aca-450c-… TABS20240127… DOLLAR SLI… 2024-02-29T11:0… Project Clos…
-#>  9 a66721a4-a85b-4738-… TABS20240126… UFCU ACC H… 2024-02-29T10:2… Project Clos…
-#> 10 5b3a70b9-6186-4c61-… TABS20240126… AMD B200 -… 2024-02-29T09:1… Review Compl…
-#> 11 48fc131a-930b-4331-… TABS20240126… Vital Stre… 2024-02-29T06:2… Project Clos…
-#> # ℹ 8 more variables: FacilityName <chr>, City <chr>, County <chr>,
-#> #   TypeOfWork <chr>, EstimatedCost <dbl>, DataVersionId <int>,
-#> #   EstimatedStartDate <chr>, EstimatedEndDate <chr>
+#>    ProjectNumber  FacilityName             City  County TypeOfWork EstimatedCost
+#>    <chr>          <chr>                    <chr> <chr>  <chr>              <dbl>
+#>  1 TABS2024012784 ATX Kitchen & Supply     Aust… Travis Renovatio…        400000
+#>  2 TABS2024012779 FM 973 Retail Center     Manor Travis New Const…       2100000
+#>  3 TABS2024012776 Indeed Tower             Aust… Travis Renovatio…       2224150
+#>  4 TABS2024012771 South Lamar Place        Aust… Travis Renovatio…        125000
+#>  5 TABS2024012741 CROSSROADS Shopping Cen… Aust… Travis Renovatio…        275000
+#>  6 TABS2024012738 One Eleven Congress      Aust… Travis Renovatio…       1200000
+#>  7 TABS2024012731 Round Rock Crossing      Roun… Travis Renovatio…        350000
+#>  8 TABS2024012707 2300 GUADALUPE STREET    Aust… Travis Renovatio…        375000
+#>  9 TABS2024012692 Austin Community Colleg… Aust… Travis Renovatio…        100000
+#> 10 TABS2024012676 AMD                      Aust… Travis Renovatio…       1000000
+#> 11 TABS2024012665 Bee Cave Shopping Center Bee … Travis Renovatio…         90000
+#> # ℹ 7 more variables: ProjectStatus <chr>, ProjectId <chr>, ProjectName <chr>,
+#> #   ProjectCreatedOn <chr>, DataVersionId <int>, EstimatedStartDate <chr>,
+#> #   EstimatedEndDate <chr>
 ```
 
 ## Additional Arguments
@@ -76,23 +69,23 @@ GetProjects(
   city = "Austin",
   owner = "Tesla"
 )
-#> # A tibble: 46 × 13
-#>    ProjectId            ProjectNumber ProjectName ProjectCreatedOn ProjectStatus
-#>    <chr>                <chr>         <chr>       <chr>            <chr>        
-#>  1 2204d890-e4df-4414-… TABS20250217… Visitor Ci… 2025-06-20T07:2… Review Compl…
-#>  2 d9b4c252-d7c4-4b36-… TABS20250216… Employee a… 2025-06-18T16:4… Review Compl…
-#>  3 6430d938-860c-4e55-… TABS20250204… GAX PS      2025-06-04T07:3… Project Clos…
-#>  4 22527b2b-0091-4784-… TABS20250204… GA PS       2025-06-04T07:3… Review Compl…
-#>  5 bc6e75ff-e12c-4310-… TABS20250204… DU PS       2025-06-04T07:2… Review Compl…
-#>  6 9833e924-929c-45aa-… TABS20250204… ST2 Office  2025-06-04T07:2… Review Compl…
-#>  7 b4c97f71-8388-4976-… TABS20250204… ST1 Breakr… 2025-06-04T07:2… Review Compl…
-#>  8 435d677f-c3f0-489b-… TABS20250114… HGR         2025-02-07T14:2… Review Compl…
-#>  9 f87daa44-7c65-4377-… TABS20250085… Tesla - Au… 2024-12-27T15:1… Review Compl…
-#> 10 ecdc154a-ad93-4bf4-… TABS20250043… GA Lobby    2024-10-29T06:5… Project Clos…
-#> # ℹ 36 more rows
-#> # ℹ 8 more variables: FacilityName <chr>, City <chr>, County <chr>,
-#> #   TypeOfWork <chr>, EstimatedCost <dbl>, DataVersionId <int>,
-#> #   EstimatedStartDate <chr>, EstimatedEndDate <chr>
+#> # A tibble: 47 × 13
+#>    ProjectNumber  FacilityName            City   County TypeOfWork EstimatedCost
+#>    <chr>          <chr>                   <chr>  <chr>  <chr>              <dbl>
+#>  1 TABS2026006064 Tesla                   Austin Travis New Const…        250000
+#>  2 TABS2025021701 Tesla Gigafactory       Austin Travis New Const…         50000
+#>  3 TABS2025021600 Tesla Gigafactory       Austin Travis New Const…         50000
+#>  4 TABS2025020452 Tesla Gigafactory       Austin Travis New Const…         50000
+#>  5 TABS2025020451 Tesla Gigafactory       Austin Travis New Const…         50000
+#>  6 TABS2025020450 Tesla Gigafactory       Austin Travis New Const…         50000
+#>  7 TABS2025020449 Tesla Gigafactory       Austin Travis New Const…         50000
+#>  8 TABS2025020448 Tesla Gigafactory       Austin Travis New Const…         50000
+#>  9 TABS2025011400 Tesla Gigafactory Texas Austin Travis New Const…         50000
+#> 10 TABS2025008524 Tesla                   Austin Travis New Const…        200000
+#> # ℹ 37 more rows
+#> # ℹ 7 more variables: ProjectStatus <chr>, ProjectId <chr>, ProjectName <chr>,
+#> #   ProjectCreatedOn <chr>, DataVersionId <int>, EstimatedStartDate <chr>,
+#> #   EstimatedEndDate <chr>
 ```
 
 ### Details
@@ -105,7 +98,9 @@ database as midnight therefore, `reg_begin` at 02/29/24 will include
 projects starting on February 29, 2024 and `reg_end` at 03/01/24 will
 mean projects that started on 03/01/24 or later will not be included.
 
-**Capitalization**
+**Name Matching**
 
-As of this version, city and county names must follow appropriate
-capitalization rules.
+City and county names are matched case-insensitively, and surrounding
+whitespace is ignored, so capitalization no longer needs to match.
+Spelling and internal spacing must still match how TDLR lists the name
+(for example, `"De Witt"`, not `"Dewitt"`).

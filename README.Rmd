@@ -54,6 +54,6 @@ GetProjects(
 Dates are required to be in the mm/dd/yy format. For automating dates, you can use `format(Sys.Date(), "%D")`.
 Date arguments are passed to the database as midnight therefore, `reg_begin` at 02/29/24 will include projects starting on February 29, 2024 and `reg_end` at 03/01/24 will mean projects that started on 03/01/24 or later will not be included.
    
-**Capitalization**
+**Name Matching**
 
-As of this version, city and county names must follow appropriate capitalization rules.
+City and county names are matched case-insensitively, and surrounding whitespace is ignored, so capitalization no longer needs to match. Spelling and internal spacing must still match how TDLR lists the name (for example, `"De Witt"`, not `"Dewitt"`).
