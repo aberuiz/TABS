@@ -1,3 +1,8 @@
+# TABS 0.1.3
+
+* Packaging: switched `DESCRIPTION` to the `Authors@R` field and added
+  `testthat` as a test dependency.
+
 # TABS 0.1.2
 
 * `TABSdecoder()` — and therefore `GetProjects()` — now matches city and county

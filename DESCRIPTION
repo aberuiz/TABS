@@ -1,9 +1,9 @@
 Package: TABS
 Type: Package
 Title: TABS an R Package
-Version: 0.1.2
-Author: Abraham Ruiz
-Maintainer: Abraham Ruiz <abe@graycompass.com>
+Version: 0.1.3
+Authors@R:
+    person("Abraham", "Ruiz", , "abe@graycompass.com", role = c("aut", "cre"))
 Description: Make requests for projects registered with the Texas Department of Licensing and Regulation in the Texas Architectual Barriers System database.
 License: MIT
 Encoding: UTF-8
@@ -11,7 +11,10 @@ LazyData: true
 Imports: 
   dplyr,
   httr2
-Depends: 
+Depends:
     R (>= 4.1)
+Suggests:
+    testthat (>= 3.0.0)
 URL: https://aberuiz.github.io/TABS/
 Config/roxygen2/version: 8.0.0
+Config/testthat/edition: 3
