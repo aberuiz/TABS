@@ -2,6 +2,8 @@
 
 * Packaging: switched `DESCRIPTION` to the `Authors@R` field and added
   `testthat` as a test dependency.
+* `GetProjects()` no longer embeds stray newlines/whitespace in the request
+  body sent to TDLR, making the request robust to stricter form parsing.
 
 # TABS 0.1.2
 

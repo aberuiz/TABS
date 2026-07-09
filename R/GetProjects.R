@@ -52,10 +52,14 @@ GetProjects <- function(county = NULL, city = NULL, reg_begin = "", reg_end = ""
         `Connection` = "keep-alive"
       ) |>
       httr2::req_body_raw(
-        body = paste0("&start=", page * 100,
-                      "&length=100
-                      &search%5Bvalue%5D=true
-                      &search%5Bregex%5D=false",
+        # Build the form body as one flat string. Writing this as a multi-line
+        # literal would embed the source newlines and indentation *inside* the
+        # request (e.g. `length=100\n            &search...`), so keep each
+        # "&name=value" pair on its own concatenated argument.
+        body = paste0("start=", page * 100,
+                      "&length=100",
+                      "&search%5Bvalue%5D=true",
+                      "&search%5Bregex%5D=false",
                       "&RegistrationDateBegin=",reg_beg_formatted,
                       "&RegistrationDateEnd=",reg_end_formatted,
                       "&OwnerName=",owner,
