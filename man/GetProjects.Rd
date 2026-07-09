@@ -33,7 +33,8 @@ GetProjects(
 \item{address}{Search by the physical address of a project}
 }
 \value{
-Projects based on the given criteria
+A data frame of projects matching the given criteria. If no projects
+  match, returns `NULL` invisibly with a warning.
 }
 \description{
 Returns a df of projects registered in the TABS database
