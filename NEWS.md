@@ -14,6 +14,7 @@
 * `GetProjects()` now retries transient network/server failures and identifies
   itself with a descriptive user-agent, and its paging loop has a safety cap so
   it can never loop forever if the server misbehaves.
+* Added a `testthat` test suite covering `TABSdecoder()`.
 
 # TABS 0.1.2
 
