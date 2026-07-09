@@ -50,13 +50,21 @@ GetProjects <- function(county = NULL, city = NULL, reg_begin = "", reg_end = ""
 
   all_data <- list()
   page <- 0
+  # Paging stops when TDLR returns an empty page. The cap is a safety net: if the
+  # server ever ignored `start` and kept returning the first page, the loop would
+  # otherwise run forever. 100 rows/page * 10000 pages = far beyond any real result set.
+  max_pages <- 10000
 
-  while(TRUE){
+  while (page < max_pages){
     response <- httr2::request("https://www.tdlr.texas.gov/TABS/Search/SearchProjects") |>
       httr2::req_headers(
         `Accept` = "application/json",
         `Connection` = "keep-alive"
       ) |>
+      httr2::req_user_agent("TABS R package (https://aberuiz.github.io/TABS/)") |>
+      # Retry transient network/5xx failures with exponential backoff instead of
+      # erroring out on the first hiccup during what may be many paged requests.
+      httr2::req_retry(max_tries = 3) |>
       httr2::req_body_raw(
         # Build the form body as one flat string. Writing this as a multi-line
         # literal would embed the source newlines and indentation *inside* the
@@ -89,6 +97,10 @@ GetProjects <- function(county = NULL, city = NULL, reg_begin = "", reg_end = ""
   if (length(all_data) == 0){
     warning("No projects found for the registration period")
   } else {
+    # Decode the coded columns back to plain-language labels. TDLR currently
+    # returns these as integers, so TABSdecoder's numeric branch handles them.
+    # If TDLR ever returns them as JSON strings, that branch would be skipped and
+    # every value would decode to NA; wrap each column in as.integer() here if so.
     all_data[c("ProjectStatus","City","County","TypeOfWork")] <- lapply(
       all_data[c("ProjectStatus","City","County","TypeOfWork")],
       TABSdecoder

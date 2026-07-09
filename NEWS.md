@@ -11,6 +11,9 @@
 * An unrecognized `county`/`city` name now raises an informative error *before*
   any request is made, instead of silently sending `NA` to TDLR and returning
   no results. Blank values (no filter) are still allowed.
+* `GetProjects()` now retries transient network/server failures and identifies
+  itself with a descriptive user-agent, and its paging loop has a safety cap so
+  it can never loop forever if the server misbehaves.
 
 # TABS 0.1.2
 
