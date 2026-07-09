@@ -12,7 +12,8 @@
 #' @param facility Search by the facility name
 #' @param address Search by the physical address of a project
 #'
-#' @returns Projects based on the given criteria
+#' @returns A data frame of projects matching the given criteria. If no projects
+#'   match, returns `NULL` invisibly with a warning.
 #'
 #' @examples
 #' GetProjects(
@@ -94,18 +95,21 @@ GetProjects <- function(county = NULL, city = NULL, reg_begin = "", reg_end = ""
     all_data <- dplyr::bind_rows(all_data, data)
     page <- page + 1
   }
-  if (length(all_data) == 0){
+  # `all_data` is either the empty list() seed (no page returned any rows) or a
+  # data frame of results. Use is.data.frame()/nrow() rather than length(), which
+  # on a data frame reports the column count, not the row count.
+  if (!is.data.frame(all_data) || nrow(all_data) == 0){
     warning("No projects found for the registration period")
-  } else {
-    # Decode the coded columns back to plain-language labels. TDLR currently
-    # returns these as integers, so TABSdecoder's numeric branch handles them.
-    # If TDLR ever returns them as JSON strings, that branch would be skipped and
-    # every value would decode to NA; wrap each column in as.integer() here if so.
-    all_data[c("ProjectStatus","City","County","TypeOfWork")] <- lapply(
-      all_data[c("ProjectStatus","City","County","TypeOfWork")],
-      TABSdecoder
-    )
-    return(all_data)
+    return(invisible(NULL))
   }
-#  return(all_data)
+
+  # Decode the coded columns back to plain-language labels. TDLR currently
+  # returns these as integers, so TABSdecoder's numeric branch handles them.
+  # If TDLR ever returns them as JSON strings, that branch would be skipped and
+  # every value would decode to NA; wrap each column in as.integer() here if so.
+  all_data[c("ProjectStatus","City","County","TypeOfWork")] <- lapply(
+    all_data[c("ProjectStatus","City","County","TypeOfWork")],
+    TABSdecoder
+  )
+  return(all_data)
 }
