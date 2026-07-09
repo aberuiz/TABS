@@ -1,5 +1,27 @@
 # Changelog
 
+## TABS 0.1.3
+
+- Packaging: switched `DESCRIPTION` to the `Authors@R` field and added
+  `testthat` as a test dependency.
+- [`GetProjects()`](https://aberuiz.github.io/TABS/reference/GetProjects.md)
+  no longer embeds stray newlines/whitespace in the request body sent to
+  TDLR, making the request robust to stricter form parsing.
+- [`GetProjects()`](https://aberuiz.github.io/TABS/reference/GetProjects.md)
+  now resolves `county`/`city` names against only their own TDLR
+  dropdown, so a name that is both a city and a county no longer risks
+  the wrong match, and `city = "Unknown"` (code 9999) now resolves
+  correctly. Both filters still accept `"Unknown"`.
+- An unrecognized `county`/`city` name now raises an informative error
+  *before* any request is made, instead of silently sending `NA` to TDLR
+  and returning no results. Blank values (no filter) are still allowed.
+- [`GetProjects()`](https://aberuiz.github.io/TABS/reference/GetProjects.md)
+  now retries transient network/server failures and identifies itself
+  with a descriptive user-agent, and its paging loop has a safety cap so
+  it can never loop forever if the server misbehaves.
+- Added a `testthat` test suite covering
+  [`TABSdecoder()`](https://aberuiz.github.io/TABS/reference/TABSdecoder.md).
+
 ## TABS 0.1.2
 
 - [`TABSdecoder()`](https://aberuiz.github.io/TABS/reference/TABSdecoder.md)

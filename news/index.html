@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">TABS</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,12 +32,25 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.3" id="tabs-013">TABS 0.1.3<a class="anchor" aria-label="anchor" href="#tabs-013"></a></h2>
+<ul><li>Packaging: switched <code>DESCRIPTION</code> to the <code>Authors@R</code> field and added <code>testthat</code> as a test dependency.</li>
+<li>
+<code><a href="../reference/GetProjects.html">GetProjects()</a></code> no longer embeds stray newlines/whitespace in the request body sent to TDLR, making the request robust to stricter form parsing.</li>
+<li>
+<code><a href="../reference/GetProjects.html">GetProjects()</a></code> now resolves <code>county</code>/<code>city</code> names against only their own TDLR dropdown, so a name that is both a city and a county no longer risks the wrong match, and <code>city = "Unknown"</code> (code 9999) now resolves correctly. Both filters still accept <code>"Unknown"</code>.</li>
+<li>An unrecognized <code>county</code>/<code>city</code> name now raises an informative error <em>before</em> any request is made, instead of silently sending <code>NA</code> to TDLR and returning no results. Blank values (no filter) are still allowed.</li>
+<li>
+<code><a href="../reference/GetProjects.html">GetProjects()</a></code> now retries transient network/server failures and identifies itself with a descriptive user-agent, and its paging loop has a safety cap so it can never loop forever if the server misbehaves.</li>
+<li>Added a <code>testthat</code> test suite covering <code><a href="../reference/TABSdecoder.html">TABSdecoder()</a></code>.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.2" id="tabs-012">TABS 0.1.2<a class="anchor" aria-label="anchor" href="#tabs-012"></a></h2>
 <ul><li>
 <code><a href="../reference/TABSdecoder.html">TABSdecoder()</a></code> — and therefore <code><a href="../reference/GetProjects.html">GetProjects()</a></code> — now matches city and county names case-insensitively and ignores surrounding whitespace, so capitalization no longer needs to match TDLR exactly.</li>
 <li>Refreshed the codebook from TDLR. County <code>2062</code> is now <code>"De Witt"</code> (previously <code>"Dewitt"</code>); note the internal spacing must be matched.</li>
 </ul></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
@@ -45,7 +58,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>
