@@ -24,6 +24,21 @@ TABSdecoder <- function(codes, codebook_df=codebook) {
       match(tolower(trimws(codes)), tolower(trimws(codebook_df$value)))
     ]
 
+    # A name absent from the codebook would otherwise be pasted into the TDLR
+    # request as the literal string "NA" and silently return the wrong results.
+    # Fail loudly so typos surface at the call site. Blank/NA inputs are ignored
+    # (they represent "no filter"), and this branch is only reached for name
+    # look-ups: numeric code decoding above is intentionally left untouched.
+    supplied <- !is.na(codes) & nzchar(trimws(as.character(codes)))
+    unmatched <- supplied & is.na(numeric_values)
+    if (any(unmatched)) {
+      stop(
+        "Value(s) not found in the codebook: ",
+        paste0('"', codes[unmatched], '"', collapse = ", "),
+        call. = FALSE
+      )
+    }
+
     return(numeric_values)
   }
 }

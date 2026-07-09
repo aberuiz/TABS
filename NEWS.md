@@ -8,6 +8,9 @@
   TDLR dropdown, so a name that is both a city and a county no longer risks the
   wrong match, and `city = "Unknown"` (code 9999) now resolves correctly. Both
   filters still accept `"Unknown"`.
+* An unrecognized `county`/`city` name now raises an informative error *before*
+  any request is made, instead of silently sending `NA` to TDLR and returning
+  no results. Blank values (no filter) are still allowed.
 
 # TABS 0.1.2
 
