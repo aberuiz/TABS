@@ -32,13 +32,19 @@ GetProjects <- function(county = NULL, city = NULL, reg_begin = "", reg_end = ""
   reg_beg_formatted <- gsub("/","%2F",reg_begin)
   reg_end_formatted <- gsub("/","%2F",reg_end)
   # Decode city &/or county character value to integer for request
+  # The TDLR county filter offers the 2000-series counties plus 9999 ("Unknown");
+  # the city filter offers the 1-1999 cities plus the same 9999 "Unknown". Restrict
+  # each name lookup to its own dropdown's codes so that (a) a name that is both a
+  # city and a county (e.g. "Austin") resolves to the intended one, and (b) names
+  # never resolve to the 3000-series statuses or 9000-series work types, which are
+  # not valid location filters. 9999 is included in both so `"Unknown"` still works.
   if (!is.null(county)){
-    countycodes <- subset(codebook, codebook$code > 1999)
+    countycodes <- subset(codebook, (codebook$code > 1999 & codebook$code < 3000) | codebook$code == 9999)
     county <- TABSdecoder(county, codebook_df = countycodes)
   }
 
   if (!is.null(city)){
-    citycodes <- subset(codebook, codebook$code < 2000)
+    citycodes <- subset(codebook, codebook$code < 2000 | codebook$code == 9999)
     city <- TABSdecoder(city, codebook_df = citycodes)
   }
 
