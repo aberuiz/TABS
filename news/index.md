@@ -1,5 +1,15 @@
 # Changelog
 
+## TABS 0.1.4
+
+- When no projects match,
+  [`GetProjects()`](https://aberuiz.github.io/TABS/reference/GetProjects.md)
+  now returns `NULL` invisibly (with the existing warning) instead of
+  returning the warning message string.
+- Added regression tests for empty and paginated
+  [`GetProjects()`](https://aberuiz.github.io/TABS/reference/GetProjects.md)
+  responses.
+
 ## TABS 0.1.3
 
 - Packaging: switched `DESCRIPTION` to the `Authors@R` field and added

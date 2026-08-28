@@ -53,7 +53,8 @@ GetProjects(
 
 ## Value
 
-Projects based on the given criteria
+A data frame of projects matching the given criteria. If no projects
+match, returns \`NULL\` invisibly with a warning.
 
 ## Examples
 
