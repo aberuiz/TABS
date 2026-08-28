@@ -1,3 +1,9 @@
+# TABS 0.1.4
+
+* When no projects match, `GetProjects()` now returns `NULL` invisibly (with the
+  existing warning) instead of returning the warning message string.
+* Added regression tests for empty and paginated `GetProjects()` responses.
+
 # TABS 0.1.3
 
 * Packaging: switched `DESCRIPTION` to the `Authors@R` field and added
@@ -14,8 +20,6 @@
 * `GetProjects()` now retries transient network/server failures and identifies
   itself with a descriptive user-agent, and its paging loop has a safety cap so
   it can never loop forever if the server misbehaves.
-* When no projects match, `GetProjects()` now returns `NULL` invisibly (with the
-  existing warning) instead of returning the warning message string.
 * Added a `testthat` test suite covering `TABSdecoder()`.
 
 # TABS 0.1.2

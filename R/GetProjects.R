@@ -57,7 +57,7 @@ GetProjects <- function(county = NULL, city = NULL, reg_begin = "", reg_end = ""
   max_pages <- 10000
 
   while (page < max_pages){
-    response <- httr2::request("https://www.tdlr.texas.gov/TABS/Search/SearchProjects") |>
+    request <- httr2::request("https://www.tdlr.texas.gov/TABS/Search/SearchProjects") |>
       httr2::req_headers(
         `Accept` = "application/json",
         `Connection` = "keep-alive"
@@ -84,9 +84,8 @@ GetProjects <- function(county = NULL, city = NULL, reg_begin = "", reg_end = ""
                       "&LocationCity=",city,
                       "&LocationCounty=",county),
         "application/x-www-form-urlencoded; charset=UTF-8"
-      ) |>
-      httr2::req_perform() |>
-      httr2::resp_body_json()
+      )
+    response <- perform_tabs_request(request)
     data <- dplyr::bind_rows(response$data)
 
     if (nrow(data) == 0){
@@ -112,4 +111,12 @@ GetProjects <- function(county = NULL, city = NULL, reg_begin = "", reg_end = ""
     TABSdecoder
   )
   return(all_data)
+}
+
+# Keep the network boundary small so GetProjects can be tested with deterministic
+# responses without making live requests to TDLR.
+perform_tabs_request <- function(request) {
+  request |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
 }
