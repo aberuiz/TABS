@@ -12,7 +12,11 @@ GetProjects(
   owner = "",
   project = "",
   facility = "",
-  address = ""
+  address = "",
+  strict = FALSE,
+  request_interval = 1.5,
+  timeout = NULL,
+  user_agent = "TABS R package (https://aberuiz.github.io/TABS/)"
 )
 }
 \arguments{
@@ -31,6 +35,17 @@ GetProjects(
 \item{facility}{Search by the facility name}
 
 \item{address}{Search by the physical address of a project}
+
+\item{strict}{If `TRUE`, error when response completeness cannot be established.
+Defaults to `FALSE`, which warns and returns available results.}
+
+\item{request_interval}{Minimum seconds between search requests in this R
+session (including retries). Defaults to 1.5; use 0 to disable pacing.}
+
+\item{timeout}{Optional timeout in seconds for each HTTP attempt. `NULL`
+leaves the existing HTTP timeout behavior unchanged.}
+
+\item{user_agent}{User-Agent sent to TDLR. May include the caller's contact.}
 }
 \value{
 A data frame of projects matching the given criteria. If no projects
@@ -38,6 +53,13 @@ A data frame of projects matching the given criteria. If no projects
 }
 \description{
 Returns a df of projects registered in the TABS database
+}
+\details{
+Use `strict = TRUE` for jobs that checkpoint a search as complete. Validation
+checks response structure, repeated pages and `recordsFiltered`, but cannot
+guarantee a snapshot when the database changes during a search. HTTP and
+JSON parsing errors still propagate in both modes. In permissive mode, an
+invalid response with no usable rows returns invisible `NULL` with a warning.
 }
 \examples{
 GetProjects(

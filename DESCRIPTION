@@ -1,7 +1,7 @@
 Package: TABS
 Type: Package
 Title: TABS an R Package
-Version: 0.1.4
+Version: 0.1.5
 Authors@R:
     person("Abraham", "Ruiz", , "abe@graycompass.com", role = c("aut", "cre"))
 Description: Make requests for projects registered with the Texas Department of Licensing and Regulation in the Texas Architectual Barriers System database.
@@ -10,7 +10,8 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
   dplyr,
-  httr2
+  httr2,
+  stats
 Depends:
     R (>= 4.1)
 Suggests:

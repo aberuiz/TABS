@@ -104,3 +104,41 @@ City and county names are matched case-insensitively, and surrounding
 whitespace is ignored, so capitalization no longer needs to match.
 Spelling and internal spacing must still match how TDLR lists the name
 (for example, `"De Witt"`, not `"Dewitt"`).
+
+**Completeness and request controls**
+
+By default, `GetProjects()` warns if it cannot verify completeness and returns
+available results. Repeated pages are excluded. For a job that saves checkpoints,
+use `strict = TRUE` so incomplete searches raise an error before the job marks
+them complete. Valid empty searches still warn and return invisible `NULL`.
+HTTP and JSON parsing errors propagate in either mode.
+
+```r
+projects <- GetProjects(
+  county = "Travis",
+  reg_begin = "02/01/24",
+  reg_end = "03/01/24",
+  strict = TRUE,
+  request_interval = 1.5,
+  timeout = 60,
+  user_agent = "My project (contact: maintainer@example.org)"
+)
+```
+
+Requests, including retries, are paced within each R session at 1.5 seconds by
+default; use `request_interval = 0` to disable pacing. Separate R processes do
+not share this limit. `timeout` applies to each HTTP attempt and defaults to
+`NULL`, preserving the existing timeout behavior. The default User-Agent remains
+the TABS package identifier; callers can pass their configured contact explicitly.
+Completeness checks cannot guarantee a snapshot of a changing database.
+
+To install a specific release, including the previous version if needed:
+
+```r
+remotes::install_github("aberuiz/TABS@v0.1.5")
+# Revert to the version before the completeness and pacing changes:
+remotes::install_github("aberuiz/TABS@v0.1.4")
+```
+
+Restart R after installation to load the selected version. Pin a tag in automated
+jobs to keep future releases from changing their behavior unexpectedly.
