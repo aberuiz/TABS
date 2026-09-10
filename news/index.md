@@ -1,5 +1,28 @@
 # Changelog
 
+## TABS 0.1.5
+
+- [`GetProjects()`](https://aberuiz.github.io/TABS/reference/GetProjects.md)
+  now warns when response completeness cannot be established and returns
+  available results by default. New `strict = TRUE` raises errors
+  instead, for callers that must not checkpoint incomplete searches.
+  Checks cover malformed responses, repeated pages,
+  missing/invalid/changing `recordsFiltered`, row-count mismatches, and
+  the pagination safety cap. Repeated pages are excluded before
+  returning results.
+- Search requests are paced at least 1.5 seconds apart within an R
+  session, including retries. Set `request_interval = 0` to disable
+  pacing. Separate R processes do not share the pacing limit.
+- Added opt-in per-attempt `timeout` (seconds; default `NULL`) and
+  configurable `user_agent`, retaining the existing User-Agent by
+  default.
+- Search form fields are now encoded correctly, including `&` and `+` in
+  names and addresses.
+- Existing positional arguments and successful result columns are
+  unchanged. Valid empty searches still warn and return invisible
+  `NULL`; HTTP and JSON parsing errors still propagate. New completeness
+  warnings can become errors for callers using `options(warn = 2)`.
+
 ## TABS 0.1.4
 
 - When no projects match,

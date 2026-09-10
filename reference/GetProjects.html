@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">TABS</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,11 @@
 <span>  owner <span class="op">=</span> <span class="st">""</span>,</span>
 <span>  project <span class="op">=</span> <span class="st">""</span>,</span>
 <span>  facility <span class="op">=</span> <span class="st">""</span>,</span>
-<span>  address <span class="op">=</span> <span class="st">""</span></span>
+<span>  address <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  strict <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  request_interval <span class="op">=</span> <span class="fl">1.5</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  user_agent <span class="op">=</span> <span class="st">"TABS R package (https://aberuiz.github.io/TABS/)"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -85,11 +89,38 @@
 <dt id="arg-address">address<a class="anchor" aria-label="anchor" href="#arg-address"></a></dt>
 <dd><p>Search by the physical address of a project</p></dd>
 
+
+<dt id="arg-strict">strict<a class="anchor" aria-label="anchor" href="#arg-strict"></a></dt>
+<dd><p>If `TRUE`, error when response completeness cannot be established.
+Defaults to `FALSE`, which warns and returns available results.</p></dd>
+
+
+<dt id="arg-request-interval">request_interval<a class="anchor" aria-label="anchor" href="#arg-request-interval"></a></dt>
+<dd><p>Minimum seconds between search requests in this R
+session (including retries). Defaults to 1.5; use 0 to disable pacing.</p></dd>
+
+
+<dt id="arg-timeout">timeout<a class="anchor" aria-label="anchor" href="#arg-timeout"></a></dt>
+<dd><p>Optional timeout in seconds for each HTTP attempt. `NULL`
+leaves the existing HTTP timeout behavior unchanged.</p></dd>
+
+
+<dt id="arg-user-agent">user_agent<a class="anchor" aria-label="anchor" href="#arg-user-agent"></a></dt>
+<dd><p>User-Agent sent to TDLR. May include the caller's contact.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A data frame of projects matching the given criteria. If no projects
   match, returns `NULL` invisibly with a warning.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Use `strict = TRUE` for jobs that checkpoint a search as complete. Validation
+checks response structure, repeated pages and `recordsFiltered`, but cannot
+guarantee a snapshot when the database changes during a search. HTTP and
+JSON parsing errors still propagate in both modes. In permissive mode, an
+invalid response with no usable rows returns invisible `NULL` with a warning.</p>
     </div>
 
     <div class="section level2">

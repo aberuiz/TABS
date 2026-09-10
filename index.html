@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">TABS</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.5</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -128,6 +128,25 @@
 <p>Dates are required to be in the mm/dd/yy format. For automating dates, you can use <code>format(Sys.Date(), "%D")</code>. Date arguments are passed to the database as midnight therefore, <code>reg_begin</code> at 02/29/24 will include projects starting on February 29, 2024 and <code>reg_end</code> at 03/01/24 will mean projects that started on 03/01/24 or later will not be included.</p>
 <p><strong>Name Matching</strong></p>
 <p>City and county names are matched case-insensitively, and surrounding whitespace is ignored, so capitalization no longer needs to match. Spelling and internal spacing must still match how TDLR lists the name (for example, <code>"De Witt"</code>, not <code>"Dewitt"</code>).</p>
+<p><strong>Completeness and request controls</strong></p>
+<p>By default, <code><a href="reference/GetProjects.html">GetProjects()</a></code> warns if it cannot verify completeness and returns available results. Repeated pages are excluded. For a job that saves checkpoints, use <code>strict = TRUE</code> so incomplete searches raise an error before the job marks them complete. Valid empty searches still warn and return invisible <code>NULL</code>. HTTP and JSON parsing errors propagate in either mode.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">projects</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/GetProjects.html">GetProjects</a></span><span class="op">(</span></span>
+<span>  county <span class="op">=</span> <span class="st">"Travis"</span>,</span>
+<span>  reg_begin <span class="op">=</span> <span class="st">"02/01/24"</span>,</span>
+<span>  reg_end <span class="op">=</span> <span class="st">"03/01/24"</span>,</span>
+<span>  strict <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  request_interval <span class="op">=</span> <span class="fl">1.5</span>,</span>
+<span>  timeout <span class="op">=</span> <span class="fl">60</span>,</span>
+<span>  user_agent <span class="op">=</span> <span class="st">"My project (contact: maintainer@example.org)"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>Requests, including retries, are paced within each R session at 1.5 seconds by default; use <code>request_interval = 0</code> to disable pacing. Separate R processes do not share this limit. <code>timeout</code> applies to each HTTP attempt and defaults to <code>NULL</code>, preserving the existing timeout behavior. The default User-Agent remains the TABS package identifier; callers can pass their configured contact explicitly. Completeness checks cannot guarantee a snapshot of a changing database.</p>
+<p>To install a specific release, including the previous version if needed:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"aberuiz/TABS@v0.1.5"</span><span class="op">)</span></span>
+<span><span class="co"># Revert to the version before the completeness and pacing changes:</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"aberuiz/TABS@v0.1.4"</span><span class="op">)</span></span></code></pre></div>
+<p>Restart R after installation to load the selected version. Pin a tag in automated jobs to keep future releases from changing their behavior unexpectedly.</p>
 </div>
 </div>
 </div>
